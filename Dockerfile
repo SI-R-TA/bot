@@ -19,4 +19,4 @@ COPY . /app
 WORKDIR /app
 
 # الأمر الذي سيتم تشغيله عند بدء تشغيل الحاوية
-CMD ["python", "sirta_command.py"]  # أو الأمر المناسب لتشغيل تطبيقك
+CMD ["python", "start_command.py"]  # أو الأمر المناسب لتشغيل تطبيقك
