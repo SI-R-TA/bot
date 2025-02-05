@@ -4,7 +4,7 @@ FROM python:3.9
 USER root
 
 # تحديث وتثبيت sudo و bash
-RUN apt-get update && apt-get install -y sudo
+RUN apt-get update && apt-get install -y sudo bash
 RUN sudo apt-get update && sudo apt-get install -y bash
 RUN useradd -ms /bin/bash appuser && mkdir -p /app && chown -R appuser:appuser /app
 
@@ -12,7 +12,7 @@ USER appuser
 
 # نسخ ملف requirements.txt وتثبيت التبعيات
 COPY requirements.txt /app/
-RUN pip install -r /app/requirements.txt
+RUN pip install --user-r /app/requirements.txt
 
 # نسخ باقي ملفات المشروع
 COPY . /app
