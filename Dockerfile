@@ -12,8 +12,10 @@ COPY requirements.txt /app/
 
 RUN pip install -r /app/requirements.txt
 
-COPY . /app
+COPY . /app  # Added a dot before the slash
 
 WORKDIR /app
-RUN chmod +x /app/my_script.sh  
-CMD ["bash", "sirta_command.py"]
+
+RUN chmod +x /app/sirta_command.py  # Added chmod instruction
+
+CMD ["python", "sirta_command.py"]  # Changed CMD instruction
