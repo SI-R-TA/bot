@@ -6,7 +6,8 @@ USER root
 # تحديث وتثبيت sudo و bash
 RUN apt-get update && apt-get install -y sudo
 RUN sudo apt-get update && sudo apt-get install -y bash
-RUN useradd -ms /bin/bash appuser 
+RUN useradd -ms /bin/bash appuser && mkdir -p /app && chown -R appuser:appuser /app
+
 USER appuser
 
 # نسخ ملف requirements.txt وتثبيت التبعيات
@@ -19,7 +20,7 @@ COPY . /app
 # تعيين مجلد العمل
 WORKDIR /app
 EXPOSE 8080
-RUN  chown -R appuser:appuser /app
+
 # الأمر الذي سيتم تشغيله عند بدء تشغيل الحاوية
 CMD ["python", "MI.PY"] 
 # أو الأمر المناسب لتشغيل تطبيقك
