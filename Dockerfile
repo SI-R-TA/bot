@@ -6,7 +6,7 @@ USER root
 # تحديث وتثبيت sudo و bash
 RUN apt-get update && apt-get install -y sudo
 RUN sudo apt-get update && sudo apt-get install -y bash
-
+RUN useradd -ms /bin/bash appuser
 USER appuser
 
 # نسخ ملف requirements.txt وتثبيت التبعيات
