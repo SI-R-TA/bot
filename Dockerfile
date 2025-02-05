@@ -16,4 +16,4 @@ COPY . /app
 
 WORKDIR /app
 
-CMD ["python", "sirta_command.py"]
+CMD ["bash", "sirta_command.py"]
