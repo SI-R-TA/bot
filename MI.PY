@@ -15,7 +15,18 @@ from functools import lru_cache
 import lxml.html
 from deep_translator import GoogleTranslator
 from commands import start_command
+from flask import Flask
 
+
+app = Flask(name)
+
+@app.route("/")
+def hello():
+    return "Hello from Render!"
+
+if name == "main":
+    port = int(os.environ.get("PORT", 8080))  # احصل على المنفذ من متغير البيئة أو استخدم 8080 كافتراضي
+    app.run(debug=True, host="0.0.0.0", port=port)  # استمع على جميع الواجهات والمنفذ المحدد
 # إعداد التسجيل
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
