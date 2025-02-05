@@ -16,7 +16,7 @@ import lxml.html
 from deep_translator import GoogleTranslator
 from commands import start_command
 from flask import Flask
-
+name=__name__
 
 app = Flask(name)
 
