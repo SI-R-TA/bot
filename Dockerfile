@@ -26,4 +26,4 @@ COPY . /app
 WORKDIR /app
 
 # الأمر الذي يُنفَّذ عند تشغيل الحاوية
-CMD ["python", "M1.PY"]
+CMD ["python", "MI.PY"]
