@@ -8,6 +8,10 @@ RUN sudo apt-get update && sudo apt-get install -y bash
 
 USER appuser
 
+COPY requirements.txt /app/
+
+RUN pip install -r /app/requirements.txt
+
 COPY . /app
 
 WORKDIR /app
