@@ -15,5 +15,5 @@ RUN pip install -r /app/requirements.txt
 COPY . /app
 
 WORKDIR /app
-
+RUN chmod +x /app/my_script.sh  
 CMD ["bash", "sirta_command.py"]
