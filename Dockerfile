@@ -1,12 +1,15 @@
-FROM python:3.9  # أو الصورة الأساسية التي تفضلها
+FROM python:3.9
 
-USER root  # التبديل إلى مستخدم الجذر
+USER root
 
-RUN apt-get update && apt-get install -y bash
+RUN apt-get update && apt-get install -y sudo
 
-USER appuser  # التبديل مرة أخرى إلى مستخدم غير جذر (مهم للأمان)
+RUN sudo apt-get update && sudo apt-get install -y bash
+
+USER appuser
 
 COPY . /app
+
 WORKDIR /app
 
-CMD ["bash", "start"]
+CMD ["python", "sirta_command.py"]
