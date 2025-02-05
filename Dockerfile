@@ -1,26 +1,29 @@
-FROM python:3.9  
-# أو الصورة الأساسية التي تستخدمها
+# استخدام الصورة الرسمية لـ Python 3.9
+FROM python:3.9
 
+# تعيين المستخدم root مؤقتًا لتثبيت الحزم
 USER root
 
-# تحديث وتثبيت sudo و bash
+# تحديث الحزم وتثبيت sudo و bash (بدون أخطاء إملائية)
 RUN apt-get update && apt-get install -y sudo bash
-RUN sudo apt-get update && sudo apt-get install -y bash
-RUN useradd -ms /bin/bash appuser && mkdir -p /app && chown -R appuser:appuser /app
 
+# إنشاء مستخدم جديد وإعداد مجلد التطبيق مع الصلاحيات
+RUN useradd -ms /bin/bash appuser && \
+    mkdir -p /app && \
+    chown -R appuser:appuser /app  # منح appuser صلاحيات كاملة على /app
+
+# التبديل إلى المستخدم appuser
 USER appuser
 
-# نسخ ملف requirements.txt وتثبيت التبعيات
+# نسخ ملف المتطلبات وتثبيتها
 COPY requirements.txt /app/
-RUN pip install --user-r /app/requirements.txt
+RUN pip install --user -r /app/requirements.txt
 
-# نسخ باقي ملفات المشروع
+# نسخ كود التطبيق إلى مجلد /app
 COPY . /app
 
-# تعيين مجلد العمل
+# تعيين مجلد العمل الرئيسي
 WORKDIR /app
-EXPOSE 8080
 
-# الأمر الذي سيتم تشغيله عند بدء تشغيل الحاوية
-CMD ["python", "MI.PY"] 
-# أو الأمر المناسب لتشغيل تطبيقك
+# الأمر الذي يُنفَّذ عند تشغيل الحاوية
+CMD ["python", "M1.PY"]
