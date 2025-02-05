@@ -10,3 +10,4 @@ psutil==5.9.7
 requests>=2.31.0
 lxml>=4.9.3
 deep-translator>=1.0.5
+Flask
