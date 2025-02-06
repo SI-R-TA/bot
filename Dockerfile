@@ -17,7 +17,7 @@ RUN pip install --user -r /app/requirements.txt
 COPY . /app
 
 WORKDIR /app
-
+COPY my_database.db /app/my_database.db
 # تغيير ملكية المجلد الذي يحتوي على قاعدة البيانات
 RUN chown -R appuser:appuser /app/db  
 # تأكد من أن المسار صحيح
