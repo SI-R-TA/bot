@@ -24,6 +24,7 @@ COPY . /app
 
 # تعيين مجلد العمل الرئيسي
 WORKDIR /app
+ENV PATH="/home/appuser/.local/bin:${PATH}"
 EXPOSE 8080
 # الأمر الذي يُنفَّذ عند تشغيل الحاوية
 CMD ["python", "MI.PY"]
