@@ -17,14 +17,10 @@ RUN pip install --user -r /app/requirements.txt
 COPY . /app
 
 WORKDIR /app
-COPY my_database.db /app/my_database.db
-# تغيير ملكية المجلد الذي يحتوي على قاعدة البيانات
-RUN chown -R appuser:appuser /app/db  
-# تأكد من أن المسار صحيح
 
-# نسخ ملف قاعدة البيانات
-COPY db/my_database.db /app/db/my_database.db 
-# استبدل your_database.db باسم ملفك
+COPY my_database.db /app/my_database.db
+
+RUN chown -R appuser:appuser /app
 
 ENV PATH="/home/appuser/.local/bin:${PATH}"
 
