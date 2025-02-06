@@ -17,14 +17,17 @@ from deep_translator import GoogleTranslator
 from commands import start_command
 from flask import Flask
 name=__name__
+k
+
 app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello from Flask!"
+    return "Hello from Render!"
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # اقرأ من متغير البيئة PORT أو استخدم 5000 كافتراضي
+    app.run(debug=True, host="0.0.0.0", port=port)
 # إعداد التسجيل
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
