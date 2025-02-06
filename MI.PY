@@ -16,14 +16,14 @@ import lxml.html
 from deep_translator import GoogleTranslator
 from commands import start_command
 from flask import Flask
-
-app = Flask(name)
+name=__name__
+app = Flask(__name__)
 
 @app.route("/")
 def hello():
     return "Hello from Flask!"
 
-if name == "main":
+if __name__ == "__main__":
     app.run(debug=True)
 # إعداد التسجيل
 logging.basicConfig(
