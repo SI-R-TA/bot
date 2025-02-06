@@ -23,7 +23,7 @@ RUN chown -R appuser:appuser /app/db
 # تأكد من أن المسار صحيح
 
 # نسخ ملف قاعدة البيانات
-COPY db/your_database.db /app/db/your_database.db 
+COPY db/my_database.db /app/db/my_database.db 
 # استبدل your_database.db باسم ملفك
 
 ENV PATH="/home/appuser/.local/bin:${PATH}"
