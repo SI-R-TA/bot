@@ -15,25 +15,23 @@ from functools import lru_cache
 import lxml.html
 from deep_translator import GoogleTranslator
 from commands import start_command
-from flask import Flask
-name=__name__
+import threading
 
+def run_web():
+    import http.server, socketserver
+    port = int(os.environ.get("PORT", 8080))
+    handler = http.server.BaseHTTPRequestHandler
+    with socketserver.TCPServer(("", port), handler) as httpd:
+        httpd.serve_forever()
 
-app = Flask(__name__)
-
-@app.route("/")
-def hello():
-    return "Hello from Render!"
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # اقرأ من متغير البيئة PORT أو استخدم 5000 كافتراضي
-    app.run(debug=True, host="0.0.0.0", port=port)
+threading.Thread(target=run_web, daemon=True).start()
+app.run()
 # إعداد التسجيل
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO,
     handlers=[
-        logging.FileHandler('bot.log', encoding='utf-8'),
+        
         logging.StreamHandler()
     ]
 )
