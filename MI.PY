@@ -24,8 +24,6 @@ def run_web():
     with socketserver.TCPServer(("", port), handler) as httpd:
         httpd.serve_forever()
 
-threading.Thread(target=run_web, daemon=True).start()
-app.run()
 # إعداد التسجيل
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
