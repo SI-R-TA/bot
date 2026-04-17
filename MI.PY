@@ -486,7 +486,7 @@ async def handle_message(client, message):
             if response_time > 1:  # إذا استغرق أكثر من ثانية
                 user_name = message.from_user.first_name
                 await message.reply(
-                    f"شكراً 
+                    f"شكراً "
 # إعداد التسجيل
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
